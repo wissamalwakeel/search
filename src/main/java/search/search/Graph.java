@@ -41,7 +41,7 @@ public class Graph {
 		System.out.println("Enter starting vertix");
 		int v = scanner.nextInt();
 		
-		switch(choice) {
+		switch(choice.toUpperCase()) {
 		case "DFS":
 			DFSsearch.dfsSearch(v, graph);
 			break;
