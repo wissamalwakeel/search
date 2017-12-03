@@ -6,8 +6,6 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-import javax.swing.plaf.synth.SynthSpinnerUI;
-
 import org.apache.commons.lang3.StringUtils;
 
 public class Graph {
@@ -15,7 +13,7 @@ public class Graph {
 	public static void main(String[] args) throws IOException {
 		
 		System.out.println("Enter number of vertices");
-		Scanner scanner = new Scanner(System.in);
+		scanner = new Scanner(System.in);
 		int vertices = scanner.nextInt();
 		System.out.println("Enter number of edges");
 		int noEdges = scanner.nextInt();
@@ -50,7 +48,8 @@ public class Graph {
 			BFSsearch.bfsSearch(v, graph);
 			break;
 		case "topo":
-			Topological.topologicalSortUtil(v,null, null, graph);
+			Topological topologicalSort = new Topological(graph);
+			topologicalSort.topologicalSort();
 			break;
 		}
 
@@ -60,6 +59,7 @@ public class Graph {
 
 	private int vertices;   // No. of vertices
     private LinkedList<Integer> adj[]; //Adjacency Lists
+	private static Scanner scanner;
  
     // Constructor
     Graph(int v)
