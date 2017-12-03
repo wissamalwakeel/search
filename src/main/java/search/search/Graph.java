@@ -34,6 +34,7 @@ public class Graph {
 			System.out.println("Please enter a choice from the menue");
 			System.out.println("-DFS");
 			System.out.println("-BFS");
+			System.out.println("-topo"); 
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 			choice = reader.readLine();
 		}
@@ -48,7 +49,10 @@ public class Graph {
 		case "BFS":
 			BFSsearch.bfsSearch(v, graph);
 			break;
-		}		
+		case "topo":
+			Topological.topologicalSortUtil(v,null, null, graph);
+			break;
+		}
 
 	}
 	
