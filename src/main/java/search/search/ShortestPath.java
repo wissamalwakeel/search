@@ -27,7 +27,7 @@ public class ShortestPath {
 	void printSolution(int dist[], int n) {
 		System.out.println("Vertex   Distance from Source");
 		for (int i = 0; i < V; i++)
-			System.out.println(i + " tt " + dist[i]);
+			System.out.println(i + "        " + dist[i]);
 	}
 
 	// Funtion that implements Dijkstra's single source shortest path

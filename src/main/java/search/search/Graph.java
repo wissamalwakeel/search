@@ -14,6 +14,7 @@ public class Graph {
 		
 		Graph graph;
 		String choice = "";
+		int v;
 		
 		while (StringUtils.isBlank(choice)) {
 			System.out.println("Please enter a choice from the menue");
@@ -25,20 +26,23 @@ public class Graph {
 			choice = reader.readLine();
 		}
 		
-		System.out.println("Enter starting vertix");
-		int v = scanner.nextInt();
-		
 		switch(choice.toUpperCase()) {
 		case "DFS":
-			 graph = creatGraph();
+			System.out.println("Enter starting vertix");
+			v = scanner.nextInt();
+			graph = creatGraph();
 			DFSsearch.dfsSearch(v, graph);
 			break;
 		case "BFS":
-			 graph = creatGraph();
+			System.out.println("Enter starting vertix");
+			v = scanner.nextInt();
+			graph = creatGraph();
 			BFSsearch.bfsSearch(v, graph);
 			break;
 		case "TOPO":
-			 graph = creatGraph();
+			System.out.println("Enter starting vertix");
+			v = scanner.nextInt();
+			graph = creatGraph();
 			Topological topologicalSort = new Topological(graph);
 			topologicalSort.topologicalSort();
 			break;
