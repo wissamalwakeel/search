@@ -12,6 +12,43 @@ public class Graph {
 
 	public static void main(String[] args) throws IOException {
 		
+		Graph graph;
+		String choice = "";
+		
+		while (StringUtils.isBlank(choice)) {
+			System.out.println("Please enter a choice from the menue");
+			System.out.println("-DFS");
+			System.out.println("-BFS");
+			System.out.println("-TOPO (Topological sort");
+			System.out.println("-DIJK (Dijkstra's Shortest Path)");
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			choice = reader.readLine();
+		}
+		
+		System.out.println("Enter starting vertix");
+		int v = scanner.nextInt();
+		
+		switch(choice.toUpperCase()) {
+		case "DFS":
+			 graph = creatGraph();
+			DFSsearch.dfsSearch(v, graph);
+			break;
+		case "BFS":
+			 graph = creatGraph();
+			BFSsearch.bfsSearch(v, graph);
+			break;
+		case "TOPO":
+			 graph = creatGraph();
+			Topological topologicalSort = new Topological(graph);
+			topologicalSort.topologicalSort();
+			break;
+		case "DIJK":
+			ShortestPath.dijkstrasShortestPath();
+		}
+
+	}
+
+	private static Graph creatGraph() {
 		System.out.println("Enter number of vertices");
 		scanner = new Scanner(System.in);
 		int vertices = scanner.nextInt();
@@ -26,33 +63,7 @@ public class Graph {
 			int endingVertix = scanner.nextInt();
 			graph.addEdge(strartingVertix, endingVertix);	
 		}
-		String choice = "";
-		
-		while (StringUtils.isBlank(choice)) {
-			System.out.println("Please enter a choice from the menue");
-			System.out.println("-DFS");
-			System.out.println("-BFS");
-			System.out.println("-topo"); 
-			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-			choice = reader.readLine();
-		}
-		
-		System.out.println("Enter starting vertix");
-		int v = scanner.nextInt();
-		
-		switch(choice.toUpperCase()) {
-		case "DFS":
-			DFSsearch.dfsSearch(v, graph);
-			break;
-		case "BFS":
-			BFSsearch.bfsSearch(v, graph);
-			break;
-		case "topo":
-			Topological topologicalSort = new Topological(graph);
-			topologicalSort.topologicalSort();
-			break;
-		}
-
+		return graph;
 	}
 	
 	
