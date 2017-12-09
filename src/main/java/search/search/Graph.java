@@ -22,6 +22,7 @@ public class Graph {
 			System.out.println("-BFS");
 			System.out.println("-TOPO (Topological sort");
 			System.out.println("-DIJK (Dijkstra's Shortest Path)");
+			System.out.println("-MST (prim)");
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 			choice = reader.readLine();
 		}
@@ -48,6 +49,9 @@ public class Graph {
 			break;
 		case "DIJK":
 			ShortestPath.dijkstrasShortestPath();
+			break;
+		case "MST":
+			MSTsearch.mst(); 
 		}
 
 	}
