@@ -25,23 +25,23 @@ public class Graph {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 			choice = reader.readLine();
 		}
-		
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		switch(choice.toUpperCase()) {
 		case "DFS":
 			System.out.println("Enter starting vertix");
-			v = scanner.nextInt();
+			v = reader.read();
 			graph = creatGraph();
 			DFSsearch.dfsSearch(v, graph);
 			break;
 		case "BFS":
 			System.out.println("Enter starting vertix");
-			v = scanner.nextInt();
+			v = reader.read();
 			graph = creatGraph();
 			BFSsearch.bfsSearch(v, graph);
 			break;
 		case "TOPO":
 			System.out.println("Enter starting vertix");
-			v = scanner.nextInt();
+			v = reader.read();
 			graph = creatGraph();
 			Topological topologicalSort = new Topological(graph);
 			topologicalSort.topologicalSort();
