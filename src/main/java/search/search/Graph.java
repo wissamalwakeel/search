@@ -23,6 +23,7 @@ public class Graph {
 			System.out.println("-TOPO (Topological sort");
 			System.out.println("-DIJK (Dijkstra's Shortest Path)");
 			System.out.println("-MST (prim)");
+			System.out.println("-KMS (Kruskal’s Minimum Spanning Tree) ");
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 			choice = reader.readLine();
 		}
@@ -52,6 +53,9 @@ public class Graph {
 			break;
 		case "MST":
 			MSTsearch.mst(); 
+			break;
+		case "KMS":
+			Ksearch.ksearch();
 		}
 
 	}
