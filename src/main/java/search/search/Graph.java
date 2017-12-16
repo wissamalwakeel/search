@@ -11,11 +11,11 @@ import org.apache.commons.lang3.StringUtils;
 public class Graph {
 
 	public static void main(String[] args) throws IOException {
-		
+
 		Graph graph;
 		String choice = "";
 		int v;
-		
+
 		while (StringUtils.isBlank(choice)) {
 			System.out.println("Please enter a choice from the menue");
 			System.out.println("-DFS");
@@ -28,7 +28,7 @@ public class Graph {
 			choice = reader.readLine();
 		}
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		switch(choice.toUpperCase()) {
+		switch (choice.toUpperCase()) {
 		case "DFS":
 			System.out.println("Enter starting vertix");
 			v = reader.read();
@@ -52,10 +52,10 @@ public class Graph {
 			ShortestPath.dijkstrasShortestPath();
 			break;
 		case "MST":
-			MSTsearch.mst(); 
+			MSTsearch.mst();
 			break;
 		case "KMS":
-			Ksearch.ksearch();
+			KMSsearch.ksearch();
 		}
 
 	}
@@ -67,44 +67,39 @@ public class Graph {
 		System.out.println("Enter number of edges");
 		int noEdges = scanner.nextInt();
 		Graph graph = new Graph(vertices);
-		while (noEdges > 0 ) {
+		while (noEdges > 0) {
 			noEdges--;
-			System.out.println( "Enter edge starting vertix ");
+			System.out.println("Enter edge starting vertix ");
 			int strartingVertix = scanner.nextInt();
 			System.out.println("Enter edge ending vertix");
 			int endingVertix = scanner.nextInt();
-			graph.addEdge(strartingVertix, endingVertix);	
+			graph.addEdge(strartingVertix, endingVertix);
 		}
 		return graph;
 	}
-	
-	
 
-	private int vertices;   // No. of vertices
-    private LinkedList<Integer> adj[]; //Adjacency Lists
+	private int vertices;
+	private LinkedList<Integer> adj[];
 	private static Scanner scanner;
- 
-    // Constructor
-    Graph(int v)
-    {
-        vertices = v;
-        adj = new LinkedList[v];																							
-        for (int i=0; i<v; ++i)
-            adj[i] = new LinkedList();
-    }
- 
-    // Function to add an edge into the graph
-    void addEdge(int v,int w)
-    {
-        adj[v].add(w);
-    }
-    
-    public int getVertices()  {
-    	return this.vertices;
-    }
-    
-    public LinkedList<Integer>[] getAdjacencyList() {
-    	return this.adj; 
-    	
-    }
+
+
+	Graph(int v) {
+		vertices = v;
+		adj = new LinkedList[v];
+		for (int i = 0; i < v; ++i)
+			adj[i] = new LinkedList();
+	}
+
+	void addEdge(int v, int w) {
+		adj[v].add(w);
+	}
+
+	public int getVertices() {
+		return this.vertices;
+	}
+
+	public LinkedList<Integer>[] getAdjacencyList() {
+		return this.adj;
+
+	}
 }
