@@ -56,10 +56,11 @@ public class ShortestPath {
 	
 	private int[][] buildGraph() {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		int graph[][] = new int[vertices][];
+		int graph[][] =null;
 		try {
 			System.out.println("Enter the number of vertices (integer expected): ");
 			vertices = Integer.parseInt(reader.readLine());
+		    graph = new int[vertices][];
 			for (int i = 0; i < vertices; i++) { 
 				System.out.println("Enter Graph data in format i,i1,i2,...in " + (i+1));
 				reader = new BufferedReader(new InputStreamReader(System.in));
