@@ -11,53 +11,56 @@ import org.apache.commons.lang3.StringUtils;
 public class Graph {
 
 	public static void main(String[] args) throws IOException {
-
-		Graph graph;
-		String choice = "";
-		int v;
-
-		while (StringUtils.isBlank(choice)) {
-			System.out.println("Please enter a choice from the menue");
-			System.out.println("-DFS");
-			System.out.println("-BFS");
-			System.out.println("-TOPO (Topological sort");
-			System.out.println("-DIJK (Dijkstra's Shortest Path)");
-			System.out.println("-MST (prim)");
-			System.out.println("-KMS (Kruskal’s Minimum Spanning Tree) ");
+		int exit = 0;
+		while (exit == 0) {		
+			Graph graph;
+			String choice = "";
+			int v;
+	
+			while (StringUtils.isBlank(choice)) {
+				System.out.println("Please enter a choice from the menue");
+				System.out.println("-DFS");
+				System.out.println("-BFS");
+				System.out.println("-TOPO (Topological sort");
+				System.out.println("-DIJK (Dijkstra's Shortest Path)");
+				System.out.println("-MST (prim)");
+				System.out.println("-KMS (Kruskal’s Minimum Spanning Tree) ");
+				BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+				choice = reader.readLine();
+			}
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-			choice = reader.readLine();
+			switch (choice.toUpperCase()) {
+			case "DFS":
+				System.out.println("Enter starting vertix");
+				v = Integer.parseInt(reader.readLine());
+				graph = creatGraph();
+				DFSsearch.dfsSearch(v, graph);
+				break;
+			case "BFS":
+				System.out.println("Enter starting vertix");
+				v = Integer.parseInt(reader.readLine());
+				graph = creatGraph();
+				BFSsearch.bfsSearch(v, graph);
+				break;
+			case "TOPO":
+				System.out.println("Enter starting vertix");
+				v = Integer.parseInt(reader.readLine());
+				graph = creatGraph();
+				Topological topologicalSort = new Topological(graph);
+				topologicalSort.topologicalSort();
+				break;
+			case "DIJK":
+				ShortestPath.dijkstrasShortestPath();
+				break;
+			case "MST":
+				MSTsearch.mst();
+				break;
+			case "KMS":
+				KMSsearch.ksearch();
+			}
+			System.out.println("Do you wish to do another search y/n? ");
+			exit = ("y".equalsIgnoreCase(reader.readLine())) ? 0 : 1 ;
 		}
-		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		switch (choice.toUpperCase()) {
-		case "DFS":
-			System.out.println("Enter starting vertix");
-			v = reader.read();
-			graph = creatGraph();
-			DFSsearch.dfsSearch(v, graph);
-			break;
-		case "BFS":
-			System.out.println("Enter starting vertix");
-			v = reader.read();
-			graph = creatGraph();
-			BFSsearch.bfsSearch(v, graph);
-			break;
-		case "TOPO":
-			System.out.println("Enter starting vertix");
-			v = reader.read();
-			graph = creatGraph();
-			Topological topologicalSort = new Topological(graph);
-			topologicalSort.topologicalSort();
-			break;
-		case "DIJK":
-			ShortestPath.dijkstrasShortestPath();
-			break;
-		case "MST":
-			MSTsearch.mst();
-			break;
-		case "KMS":
-			KMSsearch.ksearch();
-		}
-
 	}
 
 	private static Graph creatGraph() {
